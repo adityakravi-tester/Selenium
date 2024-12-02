@@ -45,6 +45,8 @@ public class CreateLead {
 		Select selectOwnership = new Select(ownershipDropdown);
 		selectOwnership.selectByValue("OWN_CCORP");
 		
+		driver.findElement(By.id("createLeadForm_primaryPhoneNumber")).sendKeys(LeadsTestData.phone);
+		
 		driver.findElement(By.name("submitButton")).click();
 		
 		//Validate View Leads page after lead creation and Get Lead details
@@ -61,5 +63,7 @@ public class CreateLead {
 		System.out.println(leadsLastName.equals(LeadsTestData.lastName) ? "Pass" : "Fail");
 		System.out.print("Validate company Name: ");
 		System.out.println(leadsCompanyName.contains(LeadsTestData.companyName) ? "Pass" : "Fail");
+		
+		driver.quit();
 	}
 }
